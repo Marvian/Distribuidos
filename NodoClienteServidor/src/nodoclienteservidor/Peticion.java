@@ -5,6 +5,7 @@
  */
 package nodoclienteservidor;
 
+import pan.Mensaje;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -26,7 +27,7 @@ public class Peticion {
 		try{
 			
 			
-			Socket socket = new Socket("Localhost", 11000);
+			Socket socket = new Socket("localhost", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 

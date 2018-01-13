@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nodocentral;
+package pan;
 
 import java.io.Serializable;
 
 /**
  *
- * @author marvian
+ * @author gilbert
  */
-public class Mensaje implements Serializable {
-    
-   private Usuario usuario;
+public class Mensaje implements Serializable{
+    private static final long serialVersionUID = 1113799434508676095L;
+    private Usuario usuario;
    private String ipVecino;
    private int puerto;
    private int[] byteParaEnvio;
@@ -127,8 +127,5 @@ public class Mensaje implements Serializable {
     public void setIpVecinoA(String ipVecinoA) {
         this.ipVecinoA = ipVecinoA;
     }
-   
-    
-   
     
 }

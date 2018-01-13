@@ -5,6 +5,7 @@
  */
 package nodocentral;
 
+import pan.Usuario;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;

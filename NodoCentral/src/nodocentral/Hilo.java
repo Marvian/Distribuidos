@@ -5,6 +5,7 @@
  */
 package nodocentral;
 
+import pan.Mensaje;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -41,13 +42,16 @@ public class Hilo extends Thread {
         
         try {
             mensaje = (Mensaje)ois.readObject();
+            System.out.println("NOMBRE" + mensaje.getOpcion());
             
-            if(mensaje.getOpcion() == 1){
+            
+            if(mensaje.getOpcion() == 2){
             	System.out.println("Un usuario "+this.sesionActual+" solicita registrarse");
             	System.out.println("Este es el usuario"+mensaje.getUsuario().getUsuario());
             	
             	try{
                     usuarios = JsonUsuario.Leer();
+                    
 	        }
 	        
                 catch(FileNotFoundException e){

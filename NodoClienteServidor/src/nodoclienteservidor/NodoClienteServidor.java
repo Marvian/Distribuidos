@@ -5,6 +5,8 @@
  */
 package nodoclienteservidor;
 
+import pan.Usuario;
+import pan.Mensaje;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ import java.util.Scanner;
 public class NodoClienteServidor {
     
     private int Respuesta;
-
+    
     /**
      * @param args the command line arguments
      */
@@ -37,9 +39,11 @@ public class NodoClienteServidor {
 
             if (respuesta == 1 ){
                 System.out.println("Insertar nombre");
-                nombre = sc.nextLine();
+                System.out.println("PROBANDO");
+                nombre = sc.next();
+                
                 System.out.println("Insertar contraseña");
-                contraseña = sc.nextLine();
+                contraseña = sc.next();
                 
                 System.out.println(nombre);                
                 System.out.println(contraseña);
@@ -61,16 +65,16 @@ public class NodoClienteServidor {
             if (respuesta == 2 ){
 
                 System.out.println("Insertar nombre");
-                nombre = sc.nextLine();
+                nombre = sc.next();
                 System.out.println("Insertar contraseña");
-                contraseña = sc.nextLine();
+                contraseña = sc.next();
 
                 Usuario usuario = new Usuario(nombre,contraseña, null, null);
                 Mensaje mensaje = new Mensaje();
                 mensaje.setUsuario(usuario);
                 mensaje.setOpcion(2);
 
-                    if(Peticion.registro(mensaje).equals("Sesion")){
+                    if(Peticion.registro(mensaje).equals("Registrado")){
                         System.out.println("Inicio de sesion");
                     }
 

@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nodoclienteservidor;
+package pan;
 
 import java.io.Serializable;
 
 /**
  *
- * @author marvian
+ * @author gilbert
  */
 public class Mensaje implements Serializable {
-    
+
+   private static final long serialVersionUID = 1113799434508676095L; 
    private Usuario usuario;
-   private String ipVecinoS;
+   private String ipVecino;
    private int puerto;
    private int[] byteParaEnvio;
    private boolean byteFinal;
@@ -23,7 +24,7 @@ public class Mensaje implements Serializable {
    
    public Mensaje () {
        this.usuario = null;
-       this.ipVecinoS = null;
+       this.ipVecino = null;
        this.puerto = 0;
        this.byteFinal = false;
        this.ipVecinoA = null;
@@ -48,14 +49,14 @@ public class Mensaje implements Serializable {
      * @return the ipVecino
      */
     public String getIpVecinoS() {
-        return ipVecinoS;
+        return ipVecino;
     }
 
     /**
      * @param ipVecino the ipVecino to set
      */
     public void setIpVecino(String ipVecinoS) {
-        this.ipVecinoS = ipVecinoS;
+        this.ipVecino = ipVecinoS;
     }
 
     /**
@@ -127,8 +128,4 @@ public class Mensaje implements Serializable {
     public void setIpVecinoA(String ipVecinoA) {
         this.ipVecinoA = ipVecinoA;
     }
-   
-    
-   
-    
 }
