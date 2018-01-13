@@ -5,10 +5,14 @@
  */
 package nodocentral;
 
+import java.net.ServerSocket;
+
 /**
  *
  * @author marvian
  */
-public class SocketCanalServidor {
+public class CanalReceptor {
+    
+    ServerSocket ss;
     
 }
