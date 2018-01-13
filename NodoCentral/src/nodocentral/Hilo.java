@@ -48,7 +48,7 @@ public class Hilo extends Thread {
             
             if(mensaje.getOpcion() == 2){
             	System.out.println("Un usuario "+this.sesionActual+" solicita registrarse");
-            	System.out.println("Este es el usuario"+mensaje.getUsuario().getUsuario());
+            	System.out.println("Este es el usuario "+mensaje.getUsuario().getUsuario());
             	
             	try{
                     usuarios = JsonUsuario.Leer();
@@ -64,6 +64,7 @@ public class Hilo extends Thread {
                 
                 if (usuarios.isEmpty()){
                     mensaje.getUsuario().setDireccionIP(socket.getInetAddress().getHostAddress());
+                    mensaje.getUsuario().setDireccionIPHash(HashIp.calcularHashIp(socket.getInetAddress().toString()));
                     usuarios.add(mensaje.getUsuario());
                     System.out.println(mensaje.getUsuario().getUsuario());
                     JsonUsuario.Escribir(usuarios);
