@@ -25,8 +25,9 @@ public class NodoClienteServidor {
         int respuesta = 0;
         String nombre;
         String contraseña;
+        System.out.println("Inicando cliente");
         
-        while ( respuesta == 9 ){
+        while ( respuesta != 9 ){
             
             System.out.println("1.- Iniciar sesion");
             System.out.println("2.- Registro");
@@ -39,6 +40,9 @@ public class NodoClienteServidor {
                 nombre = sc.nextLine();
                 System.out.println("Insertar contraseña");
                 contraseña = sc.nextLine();
+                
+                System.out.println(nombre);                
+                System.out.println(contraseña);
 
                 Usuario usuario = new Usuario(nombre,contraseña, null, null);
                 Mensaje mensaje = new Mensaje();

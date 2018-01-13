@@ -33,7 +33,9 @@ public class CanalReceptor {
                 ((Hilo) new Hilo(socket, idSession)).start();
                 idSession++;
             }
-        } catch (IOException ex) {
+        } 
+        
+        catch (IOException ex) {
             Logger.getLogger(CanalReceptor.class.getName()).log(Level.SEVERE, null, ex);
         }
         

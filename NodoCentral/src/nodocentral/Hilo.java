@@ -5,12 +5,14 @@
  */
 package nodocentral;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static nodocentral.JsonUsuario.usuarios;
 
 /**
  *
@@ -36,6 +38,73 @@ public class Hilo extends Thread {
     }
     
     public void run(){
+        
+        try {
+            mensaje = (Mensaje)ois.readObject();
+            
+            if(mensaje.getOpcion() == 1){
+            	System.out.println("Un usuario "+this.sesionActual+" solicita registrarse");
+            	System.out.println("Este es el usuario"+mensaje.getUsuario().getUsuario());
+            	
+            	try{
+                    usuarios = JsonUsuario.Leer();
+	        }
+	        
+                catch(FileNotFoundException e){
+                    System.out.println("Archivo vacio.");
+                } 
+                catch (IOException ex) {
+                    Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if (usuarios.isEmpty()){
+                    mensaje.getUsuario().setDireccionIP(socket.getInetAddress().getHostAddress());
+                    usuarios.add(mensaje.getUsuario());
+                    System.out.println(mensaje.getUsuario().getUsuario());
+                    JsonUsuario.Escribir(usuarios);
+                    oos.writeObject(mensaje);
+                    oos.flush();
+        	}
+        	
+                else {
+                    int i = 0;
+                    while ( i < usuarios.size()){
+        		if ((usuarios.get(i).getUsuario().equals(mensaje.getUsuario().getUsuario())) || (usuarios.get(i).getClave().equals(mensaje.getUsuario().getClave()))){
+                            break;
+        		}
+        		else{
+                            i++;
+        		}
+                    }
+                    
+                    if (i == usuarios.size()){
+                        usuarios.clear();
+                        try{
+                            usuarios = JsonUsuario.Leer();
+                        } 
+
+                        catch(FileNotFoundException e){
+                            System.out.println("Archivo vacio.");
+                        }	
+
+                        mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());	
+                        usuarios.add(i, mensaje.getUsuario());
+                        System.out.println(usuarios.get(0).getUsuario());
+                        System.out.println(usuarios.get(1).getUsuario());
+                        JsonUsuario.Escribir(usuarios);	
+                        oos.writeObject(mensaje);
+                        oos.flush();
+                    }
+                }
+            }
+            
+        }
+        catch (IOException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     
     }
     
