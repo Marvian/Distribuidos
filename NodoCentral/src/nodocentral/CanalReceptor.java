@@ -29,7 +29,7 @@ public class CanalReceptor {
             while (true) {
                 Socket socket;
                 socket = ss.accept();
-                System.out.println("Nueva conexión entrante: "+socket);
+                System.out.println("Nuevo cliente: "+socket);
                 ((Hilo) new Hilo(socket, idSession)).start();
                 idSession++;
             }

@@ -18,6 +18,8 @@ public class Mensaje implements Serializable {
    private int puerto;
    private int[] byteParaEnvio;
    private boolean byteFinal;
+   private int opcion;
+   private String ipVecinoA; 
    
       
    public Mensaje () {
@@ -97,8 +99,36 @@ public class Mensaje implements Serializable {
     public void setByteFinal(boolean byteFinal) {
         this.byteFinal = byteFinal;
     }
+
+    /**
+     * @return the opcion
+     */
+    public int getOpcion() {
+        return opcion;
+    }
+
+    /**
+     * @param opcion the opcion to set
+     */
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+
+    /**
+     * @return the ipVecinoA
+     */
+    public String getIpVecinoA() {
+        return ipVecinoA;
+    }
+
+    /**
+     * @param ipVecinoA the ipVecinoA to set
+     */
+    public void setIpVecinoA(String ipVecinoA) {
+        this.ipVecinoA = ipVecinoA;
+    }
    
-   
+    
    
     
 }

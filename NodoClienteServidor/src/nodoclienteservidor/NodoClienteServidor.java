@@ -22,33 +22,61 @@ public class NodoClienteServidor {
     public static void main(String[] args) throws IOException {
         
         Scanner sc = new Scanner(System.in);
-        int respuesta;
+        int respuesta = 0;
         String nombre;
         String contraseña;
+        
+        while ( respuesta == 9 ){
             
-        System.out.println("1.- Iniciar sesion");
-        System.out.println("2.- Registro");
+            System.out.println("1.- Iniciar sesion");
+            System.out.println("2.- Registro");
+
+            respuesta = sc.nextInt();
+
+
+            if (respuesta == 1 ){
+                System.out.println("Insertar nombre");
+                nombre = sc.nextLine();
+                System.out.println("Insertar contraseña");
+                contraseña = sc.nextLine();
+
+                Usuario usuario = new Usuario(nombre,contraseña, null, null);
+                Mensaje mensaje = new Mensaje();
+                mensaje.setUsuario(usuario);
+                mensaje.setOpcion(1);
+
+                    if(Peticion.registro(mensaje).equals("Registrado")){
+                        System.out.println("Usuario registrado");
+                    }
+
+                    else{
+                        System.out.println("Ese usuario ya existe");
+                    }
+            }
+
+            if (respuesta == 2 ){
+
+                System.out.println("Insertar nombre");
+                nombre = sc.nextLine();
+                System.out.println("Insertar contraseña");
+                contraseña = sc.nextLine();
+
+                Usuario usuario = new Usuario(nombre,contraseña, null, null);
+                Mensaje mensaje = new Mensaje();
+                mensaje.setUsuario(usuario);
+                mensaje.setOpcion(2);
+
+                    if(Peticion.registro(mensaje).equals("Sesion")){
+                        System.out.println("Inicio de sesion");
+                    }
+
+                    else{
+                        System.out.println("Datos equivocados");
+                    }
+
+            }
         
-        respuesta = sc.nextInt();
-        
-        System.out.println("Insertar nombre");
-        nombre = sc.nextLine();
-        System.out.println("Insertar contraseña");
-        contraseña = sc.nextLine();
-        
-        Usuario usuario = new Usuario(nombre,contraseña, null, null);
-        Mensaje mensaje = new Mensaje();
-	mensaje.setUsuario(usuario);
-        
-        if (respuesta == 1 ){
-            mensaje.setOpcion(1);
         }
-        
-        if (respuesta == 2 ){
-            mensaje.setOpcion(2);
-            
-        }
-        
     }
 }
     

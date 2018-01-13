@@ -14,17 +14,19 @@ import java.io.Serializable;
 public class Mensaje implements Serializable {
     
    private Usuario usuario;
-   private String ipVecino;
+   private String ipVecinoS;
    private int puerto;
    private int[] byteParaEnvio;
    private boolean byteFinal;
    private int opcion;
+   private String ipVecinoA; 
    
    public Mensaje () {
        this.usuario = null;
-       this.ipVecino = null;
+       this.ipVecinoS = null;
        this.puerto = 0;
        this.byteFinal = false;
+       this.ipVecinoA = null;
    
    }
 
@@ -45,15 +47,15 @@ public class Mensaje implements Serializable {
     /**
      * @return the ipVecino
      */
-    public String getIpVecino() {
-        return ipVecino;
+    public String getIpVecinoS() {
+        return ipVecinoS;
     }
 
     /**
      * @param ipVecino the ipVecino to set
      */
-    public void setIpVecino(String ipVecino) {
-        this.ipVecino = ipVecino;
+    public void setIpVecino(String ipVecinoS) {
+        this.ipVecinoS = ipVecinoS;
     }
 
     /**
@@ -111,8 +113,22 @@ public class Mensaje implements Serializable {
     public void setOpcion(int opcion) {
         this.opcion = opcion;
     }
+
+    /**
+     * @return the ipVecinoA
+     */
+    public String getIpVecinoA() {
+        return ipVecinoA;
+    }
+
+    /**
+     * @param ipVecinoA the ipVecinoA to set
+     */
+    public void setIpVecinoA(String ipVecinoA) {
+        this.ipVecinoA = ipVecinoA;
+    }
    
-   
+    
    
     
 }

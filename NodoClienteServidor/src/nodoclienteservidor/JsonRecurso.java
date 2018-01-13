@@ -16,7 +16,7 @@ import org.json.simple.JSONObject;
  *
  * @author marvian
  */
-public class EscribirJson {
+public class JsonRecurso {
     
         
     public static void EscribirRecurso(Recurso Recurso){
