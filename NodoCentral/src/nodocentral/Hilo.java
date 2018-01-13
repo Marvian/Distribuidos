@@ -96,8 +96,7 @@ public class Hilo extends Thread {
                         mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());
                         mensaje.getUsuario().setDireccionIPHash(HashIp.calcularHashIp(socket.getInetAddress().toString()));
                         usuarios.add(i, mensaje.getUsuario());
-                        System.out.println(usuarios.get(0).getUsuario());
-                        System.out.println(usuarios.get(1).getUsuario());
+                        usuarios = JsonUsuario.OrdenarPorHash(usuarios);
                         JsonUsuario.Escribir(usuarios);	
                         oos.writeObject(mensaje);
                         oos.flush();

@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -117,5 +119,25 @@ public class JsonUsuario {
 		
 
 	}
+    
+    public static ArrayList<Usuario> OrdenarPorHash(ArrayList<Usuario> UsuariosDesordenado){
+    
+        JSONArray usuariosOrdenado = new JSONArray();
+        
+        String arregloHash[] = null;
+        
+        
+            for (int i=0 ; i < UsuariosDesordenado.size() ; i++){
+                System.out.println("si saca el valor " +UsuariosDesordenado.get(i).getDireccionIPHash());
+                 arregloHash[i] = UsuariosDesordenado.get(i).getDireccionIPHash();
+                         
+            }
+            
+            for (int j=0 ; j < arregloHash.length ; j++){
+                 System.out.println(arregloHash[j]);
+            }
+        return UsuariosDesordenado;
+    }
+    
     
 }

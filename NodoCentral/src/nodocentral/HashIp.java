@@ -28,7 +28,6 @@ public class HashIp {
                   sb.append(Integer.toHexString(0x100 + (b & 0xff)).substring(1));
             
             hash = sb.toString();
-            System.out.println(hash);
 
           return hash;
         }
