@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static nodocentral.JsonUsuario.usuarios;
@@ -91,7 +92,8 @@ public class Hilo extends Thread {
                             System.out.println("Archivo vacio.");
                         }	
 
-                        mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());	
+                        mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());
+                        mensaje.getUsuario().setDireccionIPHash(HashIp.calcularHashIp(socket.getInetAddress().toString()));
                         usuarios.add(i, mensaje.getUsuario());
                         System.out.println(usuarios.get(0).getUsuario());
                         System.out.println(usuarios.get(1).getUsuario());
@@ -107,6 +109,8 @@ public class Hilo extends Thread {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         } 
         catch (ClassNotFoundException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         }   
     

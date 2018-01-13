@@ -15,7 +15,8 @@ public class Usuario implements Serializable {
     
     private String usuario;
     private String clave;
-    private String direccionIP;
+    private String direccionIP;    
+    private String direccionIPHash;
     private long cantidadDescargas;
     
     public Usuario(String usuario, String clave, String correo, String direccionIP) {
@@ -87,6 +88,22 @@ public class Usuario implements Serializable {
     public void setCantidadDescargas(long cantidadDescargas) {
         this.cantidadDescargas = cantidadDescargas;
     }
+
+    /**
+     * @return the direccionIPHash
+     */
+    public String getDireccionIPHash() {
+        return direccionIPHash;
+    }
+
+    /**
+     * @param direccionIPHash the direccionIPHash to set
+     */
+    public void setDireccionIPHash(String direccionIPHash) {
+        this.direccionIPHash = direccionIPHash;
+    }
+    
+    
     
     
 }

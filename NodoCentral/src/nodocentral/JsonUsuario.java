@@ -33,6 +33,7 @@ public class JsonUsuario {
 	usuario.setUsuario(((String) usuarioJson.get("Usuario")));
 	usuario.setClave(((String) usuarioJson.get("Clave")));
 	usuario.setDireccionIP(((String) usuarioJson.get("Direccion")));
+        usuario.setDireccionIPHash(((String) usuarioJson.get("Hash")));
 	usuario.setCantidadDescargas(((Long) usuarioJson.get("Cantidad")));
 	usuarios.add(usuario);
 	return usuarios;
@@ -52,6 +53,7 @@ public class JsonUsuario {
 		usuarioJson.put("Usuario",( listaUsuarios.get(i).getUsuario()));
 		usuarioJson.put("Clave",(listaUsuarios.get(i).getClave()));
 		usuarioJson.put("Direccion", (listaUsuarios.get(i).getDireccionIP()));
+                usuarioJson.put("Hash",(listaUsuarios.get(i).getDireccionIPHash()));
 		usuarioJson.put("Cantidad",( listaUsuarios.get(i).getCantidadDescargas()));
 		usuarios.add(usuarioJson);	
             }

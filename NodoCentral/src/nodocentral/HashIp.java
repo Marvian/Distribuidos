@@ -15,14 +15,14 @@ import java.security.NoSuchAlgorithmException;
  */
 public class HashIp {
     
-    public static String calcularHashIp (String contrasena) throws NoSuchAlgorithmException {
+    public static String calcularHashIp (String direccionIP) throws NoSuchAlgorithmException {
             
             String hash = null;
             
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             //Carga los valores al MessageDigest
-            md5.update(contrasena.getBytes());           
-            // La contraseña ya cifrada y lo pasa hexadecimal 
+            md5.update(direccionIP.getBytes());           
+            // La direccionIp ya cifrada y lo pasa hexadecimal 
             StringBuilder sb = new StringBuilder();
             for (byte b : md5.digest())
                   sb.append(Integer.toHexString(0x100 + (b & 0xff)).substring(1));
