@@ -5,7 +5,12 @@
  */
 package nodoclienteservidor;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -59,6 +64,27 @@ public class Recurso implements Serializable {
         this.cantidad = cantidad;
     }
     
-    
-    
+    public static void obtenerRecursosEnDirectorio() {
+        try {
+            final File baseDirectory = new File("");
+            final File directory = new File(baseDirectory.getCanonicalPath() + File.separator + "client-node-music");
+            final ArrayList<Recurso> resultList = new ArrayList();
+
+            for (File musicFile : directory.listFiles()) {
+                final Recurso recurso = new Recurso();
+                recurso.setNombre(musicFile.getName());
+                recurso.setHashNombre(HashNombre.calcularHashNombre(musicFile.getName()));
+                recurso.setCantidad(1);
+                resultList.add(recurso);
+            }
+
+            JsonRecurso.EscribirRecursos(resultList);
+        }
+        catch (NoSuchAlgorithmException e) {
+            System.err.println(e);
+        }
+        catch (IOException e) {
+            System.err.println(e);
+        }
+    }
 }
