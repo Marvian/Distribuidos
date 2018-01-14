@@ -23,27 +23,31 @@ public class Peticion {
     }
     
     public static String registro (Mensaje mensaje){
-        try{
-            Socket socket = new Socket("localhost", 11000);
+		try{
+			
+			Socket socket = new Socket("localhost", 11000);
+			
+			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-
-            oos.writeObject(mensaje);
-            oos.flush();
-
-            Mensaje recibido = (Mensaje) ois.readObject();
-
-            oos.close();
-            ois.close();
-
-            return "Registrado";
-        }
-        catch(Exception e1){
-            return "error";
-        }
-    }
+			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			
+			oos.writeObject(mensaje);
+			oos.flush();
+                        
+			Mensaje recibido = (Mensaje) ois.readObject();                        
+                      
+                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
+			
+			oos.close();
+			ois.close();
+			
+			return "Registrado";
+		}
+			catch(Exception e1){
+				return "error";
+			}
+	}
+    
     
     public static void BuscarRecurso(String nombre) {
     
