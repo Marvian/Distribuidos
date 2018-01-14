@@ -124,10 +124,9 @@ public class JsonUsuario {
     
         JSONArray usuariosOrdenado = new JSONArray();
         
-        String arregloHash[] = null;
+        String arregloHash[] = new String[ UsuariosDesordenado.size() - 1 ];
         
-        
-            for (int i=0 ; i < UsuariosDesordenado.size() ; i++){
+            for (int i=0 ; i < arregloHash.length ; i++){
                 System.out.println("si saca el valor " +UsuariosDesordenado.get(i).getDireccionIPHash());
                  arregloHash[i] = UsuariosDesordenado.get(i).getDireccionIPHash();
                          
