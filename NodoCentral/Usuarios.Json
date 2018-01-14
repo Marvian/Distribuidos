@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"Usuarios":[{"Usuario":"Marvian","Clave":"hola","Cantidad":0,"Direccion":"127.0.0.1","Hash":"fe8ebeead94894594e3b9fcfe55a0d44"}]}
+=======
+{"Usuarios":[{"Usuario":"q","Clave":"q","Cantidad":0,"Direccion":"127.0.0.1","Hash":"fe8ebeead94894594e3b9fcfe55a0d44"},{"Usuario":"j","Clave":"j","Cantidad":0,"Direccion":"\/127.0.0.1","Hash":"fe8ebeead94894594e3b9fcfe55a0d44"},{"Usuario":"y","Clave":"y","Cantidad":0,"Direccion":"\/127.0.0.1","Hash":"fe8ebeead94894594e3b9fcfe55a0d44"},{"Usuario":"rty","Clave":"qwe","Cantidad":0,"Direccion":"\/127.0.0.1","Hash":"fe8ebeead94894594e3b9fcfe55a0d44"}]}
+>>>>>>> c32890b60cb16b252731cb4bf1b06a1f9051776a
