@@ -28,7 +28,6 @@ public class NodoClienteServidor {
         String nombre;
         String contraseña;
         System.out.println("Inicando cliente");
-        
         while ( respuesta != 9 ){
             
             System.out.println("1.- Registro");
@@ -46,13 +45,13 @@ public class NodoClienteServidor {
                 mensaje.setUsuario(usuario);
                 mensaje.setOpcion(1);
 
-                    if(Peticion.registro(mensaje).equals("Registrado")){
-                        System.out.println("Usuario registrado");
-                    }
-
-                    else{
-                        System.out.println("Ese usuario ya existe");
-                    }
+                if(Peticion.registro(mensaje).equals("Registrado")){
+                    System.out.println("Usuario registrado");
+                    Recurso.obtenerRecursosEnDirectorio();
+                }
+                else{
+                    System.out.println("Ese usuario ya existe");
+                }
             }
         
         }

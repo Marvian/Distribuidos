@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nodoclienteservidor;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+/**
+ *
+ * @author genio
+ */
+public class HashNombre {
+    public static String calcularHashNombre (String nombre) throws NoSuchAlgorithmException {
+            
+        String hash = null;
+
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        //Carga los valores al MessageDigest
+        md5.update(nombre.getBytes());           
+        // La direccionIp ya cifrada y lo pasa hexadecimal 
+        StringBuilder sb = new StringBuilder();
+        for (byte b : md5.digest())
+              sb.append(Integer.toHexString(0x100 + (b & 0xff)).substring(1));
+
+        hash = sb.toString();
+
+        return hash;
+    }
+}
