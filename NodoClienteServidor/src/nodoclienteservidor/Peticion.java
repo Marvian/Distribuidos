@@ -22,7 +22,6 @@ public class Peticion {
         return Respuesta;
     }
     
-    
     public static String registro (Mensaje mensaje){
 		try{
 			
@@ -50,5 +49,10 @@ public class Peticion {
 	}
     
     
+    public static void BuscarRecurso(String nombre) {
     
+        HiloBusquedaRecurso hiloBusquedaRecurso = new HiloBusquedaRecurso(nombre);
+        hiloBusquedaRecurso.start();
+        
+    }
 }

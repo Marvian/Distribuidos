@@ -5,9 +5,11 @@
  */
 package nodoclienteservidor;
 
+import java.io.BufferedReader;
 import pan.Usuario;
 import pan.Mensaje;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -21,9 +23,9 @@ public class NodoClienteServidor {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int respuesta = 0;
         String nombre;
         String contraseña;
@@ -31,14 +33,14 @@ public class NodoClienteServidor {
         while ( respuesta != 9 ){
             
             System.out.println("1.- Registro");
+            System.out.println("2.- Buscar recurso");
             System.out.println("9.- Salir");
 
-            respuesta = sc.nextInt();
-
-
+            respuesta = Integer.parseInt(br.readLine());
+            
             if (respuesta == 1 ){
                 System.out.println("Insertar nombre");
-                nombre = sc.next();
+                nombre = br.readLine();
                 
                 Usuario usuario = new Usuario(nombre,null, null, null);
                 Mensaje mensaje = new Mensaje();
@@ -55,6 +57,13 @@ public class NodoClienteServidor {
                 else{
                     System.out.println("Ese usuario ya existe");
                 }
+            } else if (respuesta == 2) {
+                System.out.println("Insertar nombre del recurso");
+                nombre = br.readLine();
+                
+                Peticion.BuscarRecurso(nombre);
+                
+                Thread.sleep(1000);
             }
         
         }
