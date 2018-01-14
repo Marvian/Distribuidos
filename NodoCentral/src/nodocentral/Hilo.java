@@ -46,7 +46,7 @@ public class Hilo extends Thread {
             System.out.println("NOMBRE" + mensaje.getOpcion());
             
             
-            if(mensaje.getOpcion() == 2){
+            if(mensaje.getOpcion() == 1){
             	System.out.println("Un usuario "+this.sesionActual+" solicita registrarse");
             	System.out.println("Este es el usuario "+mensaje.getUsuario().getUsuario());
             	

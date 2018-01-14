@@ -31,24 +31,17 @@ public class NodoClienteServidor {
         
         while ( respuesta != 9 ){
             
-            System.out.println("1.- Iniciar sesion");
-            System.out.println("2.- Registro");
+            System.out.println("1.- Registro");
+            System.out.println("9.- Salir");
 
             respuesta = sc.nextInt();
 
 
             if (respuesta == 1 ){
                 System.out.println("Insertar nombre");
-                System.out.println("PROBANDO");
                 nombre = sc.next();
                 
-                System.out.println("Insertar contraseña");
-                contraseña = sc.next();
-                
-                System.out.println(nombre);                
-                System.out.println(contraseña);
-
-                Usuario usuario = new Usuario(nombre,contraseña, null, null);
+                Usuario usuario = new Usuario(nombre,null, null, null);
                 Mensaje mensaje = new Mensaje();
                 mensaje.setUsuario(usuario);
                 mensaje.setOpcion(1);
@@ -60,28 +53,6 @@ public class NodoClienteServidor {
                     else{
                         System.out.println("Ese usuario ya existe");
                     }
-            }
-
-            if (respuesta == 2 ){
-
-                System.out.println("Insertar nombre");
-                nombre = sc.next();
-                System.out.println("Insertar contraseña");
-                contraseña = sc.next();
-
-                Usuario usuario = new Usuario(nombre,contraseña, null, null);
-                Mensaje mensaje = new Mensaje();
-                mensaje.setUsuario(usuario);
-                mensaje.setOpcion(2);
-
-                    if(Peticion.registro(mensaje).equals("Registrado")){
-                        System.out.println("Inicio de sesion");
-                    }
-
-                    else{
-                        System.out.println("Datos equivocados");
-                    }
-
             }
         
         }
