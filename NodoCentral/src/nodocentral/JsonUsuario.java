@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -122,20 +123,25 @@ public class JsonUsuario {
     
     public static ArrayList<Usuario> OrdenarPorHash(ArrayList<Usuario> UsuariosDesordenado){
     
-        JSONArray usuariosOrdenado = new JSONArray();
+        ArrayList<Usuario> usuariosOrdenado = new ArrayList<Usuario>();
         
-        String arregloHash[] = new String[ UsuariosDesordenado.size() - 1 ];
         
-            for (int i=0 ; i < arregloHash.length ; i++){
-                
-                 arregloHash[i] = UsuariosDesordenado.get(i).getDireccionIPHash();
-                         
+        String arregloHash[] = new String[ UsuariosDesordenado.size()];
+        
+            for (int i=0 ; i < arregloHash.length ; i++){                
+                 arregloHash[i] = UsuariosDesordenado.get(i).getDireccionIPHash();                         
             }
             
+            Arrays.sort(arregloHash);
+            
             for (int j=0 ; j < arregloHash.length ; j++){
-                 System.out.println(arregloHash[j]);
+                for (int k=0 ; k < arregloHash.length ; k++){
+                    if (arregloHash[j] == UsuariosDesordenado.get(k).getDireccionIPHash()){
+                        usuariosOrdenado.add(UsuariosDesordenado.get(k));
+                    }
+                }                
             }
-        return UsuariosDesordenado;
+        return usuariosOrdenado;
     }
     
     
