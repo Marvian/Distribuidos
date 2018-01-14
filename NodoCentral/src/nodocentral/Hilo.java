@@ -75,7 +75,7 @@ public class Hilo extends Thread {
                 else {
                     int i = 0;
                     while ( i < usuarios.size()){
-        		if ((usuarios.get(i).getUsuario().equals(mensaje.getUsuario().getUsuario())) || (usuarios.get(i).getClave().equals(mensaje.getUsuario().getClave()))){
+        		if ((usuarios.get(i).getUsuario().equals(mensaje.getUsuario().getUsuario()))){
                             break;
         		}
         		else{
