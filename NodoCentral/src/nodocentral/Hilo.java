@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static nodocentral.JsonUsuario.usuarios;
+import pan.Usuario;
 
 /**
  *
@@ -40,6 +41,7 @@ public class Hilo extends Thread {
     }
     
     public void run(){
+        Usuario vecino = new Usuario();
         
         try {
             mensaje = (Mensaje)ois.readObject();
@@ -98,6 +100,8 @@ public class Hilo extends Thread {
                         usuarios.add(i, mensaje.getUsuario());
                         usuarios = JsonUsuario.OrdenarPorHash(usuarios);
                         JsonUsuario.Escribir(usuarios);	
+                        vecino = BuscarUsuario.buscarUsuario(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                        mensaje.getUsuario().setDireccionVecino(vecino.getDireccionIP());
                         oos.writeObject(mensaje);
                         oos.flush();
                     }

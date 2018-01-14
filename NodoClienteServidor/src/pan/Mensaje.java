@@ -15,19 +15,15 @@ public class Mensaje implements Serializable {
 
    private static final long serialVersionUID = 1113799434508676095L; 
    private Usuario usuario;
-   private String ipVecino;
    private int puerto;
    private int[] byteParaEnvio;
    private boolean byteFinal;
-   private int opcion;
-   private String ipVecinoA; 
+   private int opcion; 
    
    public Mensaje () {
        this.usuario = null;
-       this.ipVecino = null;
        this.puerto = 0;
        this.byteFinal = false;
-       this.ipVecinoA = null;
    
    }
 
@@ -44,21 +40,7 @@ public class Mensaje implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    /**
-     * @return the ipVecino
-     */
-    public String getIpVecinoS() {
-        return ipVecino;
-    }
-
-    /**
-     * @param ipVecino the ipVecino to set
-     */
-    public void setIpVecino(String ipVecinoS) {
-        this.ipVecino = ipVecinoS;
-    }
-
+    
     /**
      * @return the puerto
      */
@@ -113,19 +95,5 @@ public class Mensaje implements Serializable {
      */
     public void setOpcion(int opcion) {
         this.opcion = opcion;
-    }
-
-    /**
-     * @return the ipVecinoA
-     */
-    public String getIpVecinoA() {
-        return ipVecinoA;
-    }
-
-    /**
-     * @param ipVecinoA the ipVecinoA to set
-     */
-    public void setIpVecinoA(String ipVecinoA) {
-        this.ipVecinoA = ipVecinoA;
     }
 }
