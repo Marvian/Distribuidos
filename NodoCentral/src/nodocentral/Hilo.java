@@ -101,7 +101,9 @@ public class Hilo extends Thread {
                         usuarios.add(i, mensaje.getUsuario());
                         usuarios = JsonUsuario.OrdenarPorHash(usuarios);
                         JsonUsuario.Escribir(usuarios);	
-                        vecinoSig = BuscarUsuario.buscarUsuario(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                        vecinoSig = BuscarUsuario.buscarUsuarioSig(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                        vecinoAnt = BuscarUsuario.buscarUsuarioAnt(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                        
                         mensaje.getUsuario().setDireccionVecino(vecinoSig.getDireccionIP());
                         System.out.println("si lo trajo " + vecinoSig.getDireccionIP());
                         

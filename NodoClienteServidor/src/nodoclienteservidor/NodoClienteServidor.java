@@ -44,10 +44,13 @@ public class NodoClienteServidor {
                 Mensaje mensaje = new Mensaje();
                 mensaje.setUsuario(usuario);
                 mensaje.setOpcion(1);
-
+                   System.out.println("Antes de registrar");
                 if(Peticion.registro(mensaje).equals("Registrado")){
+                    System.out.println("despues de registrar");
+                   
                     System.out.println("Usuario registrado");
                     Recurso.obtenerRecursosEnDirectorio();
+                    faseDos();
                 }
                 else{
                     System.out.println("Ese usuario ya existe");
@@ -55,6 +58,44 @@ public class NodoClienteServidor {
             }
         
         }
+    }
+    
+    public static void faseDos(){
+        
+        Scanner sc = new Scanner(System.in);
+        int respuesta2 = 0;
+        
+        while ( respuesta2 != 9 ){
+        
+            System.out.println("1.- Buscar Recurso");
+            System.out.println("2.- Esta Solicitudes");
+            System.out.println("3.- Recursos Ofrecidos");
+            System.out.println("4.- Estado Respuestas");        
+            System.out.println("5.- Numero de descargas por video");    
+            System.out.println("9.- Salir"); 
+        
+            
+            respuesta2 = sc.nextInt();
+            
+            if (respuesta2 == 1 ){
+            }
+            
+            if (respuesta2 == 2 ){
+            }
+            
+            if (respuesta2 == 3 ){
+            }
+            
+            if (respuesta2 == 4 ){
+            }
+            
+            if (respuesta2 == 5 ){
+            }
+            
+            if (respuesta2 == 9 ){
+            }
+        }
+        
     }
 }
     

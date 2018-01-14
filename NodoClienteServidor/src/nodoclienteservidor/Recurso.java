@@ -66,9 +66,13 @@ public class Recurso implements Serializable {
     
     public static void obtenerRecursosEnDirectorio() {
         try {
+            
+            System.out.println("Pasa por aqui");
             final File baseDirectory = new File("");
             final File directory = new File(baseDirectory.getCanonicalPath() + File.separator + "client-node-music");
             final ArrayList<Recurso> resultList = new ArrayList();
+            
+            System.out.println(directory);
 
             for (File musicFile : directory.listFiles()) {
                 final Recurso recurso = new Recurso();

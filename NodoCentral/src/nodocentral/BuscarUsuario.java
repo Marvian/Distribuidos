@@ -27,7 +27,7 @@ public class BuscarUsuario {
     	return auxiliar;
     }
     
-    public static Usuario buscarUsuario(String Hash){
+    public static Usuario buscarUsuarioSig(String Hash){
 	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 	listaUsuarios = leyendo();
 	Usuario usuarioFinal = new Usuario();
@@ -43,6 +43,37 @@ public class BuscarUsuario {
                 
                 else{
 		usuarioFinal = listaUsuarios.get(i-1);
+		System.out.println("Consegui al usuario en el archivo");
+		break;
+                }
+            }
+            else{
+		usuarioFinal = null;
+		System.out.println("No esta aun");
+            }
+	}
+	
+        System.out.println("ipVecino" + usuarioFinal.getDireccionIPHash());
+	return usuarioFinal;
+	
+    }
+    
+    public static Usuario buscarUsuarioAnt(String Hash){
+	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+	listaUsuarios = leyendo();
+	Usuario usuarioFinal = new Usuario();
+	for (int i = 0; i < listaUsuarios.size(); i++){
+		
+            if ((listaUsuarios.get(i).getDireccionIPHash().equals(Hash))){
+                
+                if (i == 0){
+                    usuarioFinal = listaUsuarios.get((listaUsuarios.size()-1));
+                    System.out.println("Consegui al usuario en el archivo");
+                    break;
+                }
+                
+                else{
+		usuarioFinal = listaUsuarios.get(i+1);
 		System.out.println("Consegui al usuario en el archivo");
 		break;
                 }

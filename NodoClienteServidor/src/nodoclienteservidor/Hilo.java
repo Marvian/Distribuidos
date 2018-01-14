@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pan.Mensaje;
+import pan.Usuario;
 
 /**
  *
@@ -37,6 +38,20 @@ public class Hilo extends Thread {
     }
     
     public void run(){
+        try{
+        
+        mensaje = (Mensaje)ois.readObject();
+        
+        
+            
+        
+        
+        
+        } catch (IOException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
