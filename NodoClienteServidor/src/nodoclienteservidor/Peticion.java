@@ -37,7 +37,11 @@ public class Peticion {
 			Mensaje recibido = (Mensaje) ois.readObject();                        
                       
                         System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
-			
+			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
+                        
+                        String prueba = null;
+                        System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
+                        
 			oos.close();
 			ois.close();
 			

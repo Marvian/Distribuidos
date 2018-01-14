@@ -43,6 +43,8 @@ public class Hilo extends Thread {
         
         mensaje = (Mensaje)ois.readObject();
         
+       
+        
         
         
         } catch (IOException ex) {
