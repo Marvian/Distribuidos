@@ -5,13 +5,19 @@
  */
 package nodoclienteservidor;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -54,6 +60,35 @@ public class JsonRecurso {
         catch (IOException e){	
             System.err.println(e);
         }	
+    }
+    
+    public static ArrayList<Recurso> obtenerRecursosLocales() throws FileNotFoundException, IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        ArrayList<Recurso> recursosLocales = new ArrayList<>();
+        
+        File miDir = new File ("");
+        String path = miDir.getAbsolutePath() + File.separator + "Recurso.json";
+        File archivo = new File (path);
+        
+        if (archivo.exists()){
+            Object obj = parser.parse(new FileReader(archivo.getAbsoluteFile()));
+            JSONObject recursosJSON = (JSONObject) obj;
+            
+            JSONArray recursos = (JSONArray) recursosJSON.get("Recursos");
+            
+            for (Object recurso : recursos) {
+                JSONObject recursoObtenido = (JSONObject) recurso;
+                
+                Recurso nuevoRecurso = new Recurso();
+                nuevoRecurso.setNombre((String) recursoObtenido.get("Nombre"));
+                nuevoRecurso.setHashNombre((String) recursoObtenido.get("HashNombre"));
+                nuevoRecurso.setCantidad((long) recursoObtenido.get("Cantidad"));
+                
+                recursosLocales.add(nuevoRecurso);
+            }
+        }
+     
+        return recursosLocales;
     }
     
 }

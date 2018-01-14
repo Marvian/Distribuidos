@@ -22,32 +22,33 @@ public class Peticion {
         return Respuesta;
     }
     
-    
     public static String registro (Mensaje mensaje){
-		try{
-			
-			
-			Socket socket = new Socket("localhost", 11000);
-			
-			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+        try{
+            Socket socket = new Socket("localhost", 11000);
 
-			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-			
-			oos.writeObject(mensaje);
-			oos.flush();
-                        
-			Mensaje recibido = (Mensaje) ois.readObject();
-			
-			oos.close();
-			ois.close();
-			
-			return "Registrado";
-		}
-			catch(Exception e1){
-				return "error";
-			}
-	}
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+
+            oos.writeObject(mensaje);
+            oos.flush();
+
+            Mensaje recibido = (Mensaje) ois.readObject();
+
+            oos.close();
+            ois.close();
+
+            return "Registrado";
+        }
+        catch(Exception e1){
+            return "error";
+        }
+    }
     
+    public static void BuscarRecurso(String nombre) {
     
-    
+        HiloBusquedaRecurso hiloBusquedaRecurso = new HiloBusquedaRecurso(nombre);
+        hiloBusquedaRecurso.start();
+        
+    }
 }
