@@ -64,8 +64,7 @@ public class JsonVecinoSig {
             JSONObject objetoJson = (JSONObject) objeto;
 				
               
-            JSONObject usuarioJson = (JSONObject)objetoJson.get(0);
-            vecinoIp = (String) usuarioJson.get("VecinoSig");
+            vecinoIp = (String) objetoJson.get("VecinoSig");
                 
                 
                 

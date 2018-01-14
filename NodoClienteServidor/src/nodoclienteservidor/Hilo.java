@@ -42,6 +42,8 @@ public class Hilo extends Thread {
         try{
         
         mensaje = (Mensaje)ois.readObject();
+        JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionVecino());
+                        
         
        
         
