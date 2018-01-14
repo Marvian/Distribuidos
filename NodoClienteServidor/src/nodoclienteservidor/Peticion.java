@@ -26,7 +26,6 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			
 			Socket socket = new Socket("localhost", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -36,7 +35,9 @@ public class Peticion {
 			oos.writeObject(mensaje);
 			oos.flush();
                         
-			Mensaje recibido = (Mensaje) ois.readObject();
+			Mensaje recibido = (Mensaje) ois.readObject();                        
+                      
+                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
 			
 			oos.close();
 			ois.close();

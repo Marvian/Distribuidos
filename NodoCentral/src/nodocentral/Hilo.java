@@ -41,7 +41,8 @@ public class Hilo extends Thread {
     }
     
     public void run(){
-        Usuario vecino = new Usuario();
+        Usuario vecinoSig = new Usuario();
+        Usuario vecinoAnt = new Usuario();
         
         try {
             mensaje = (Mensaje)ois.readObject();
@@ -100,8 +101,14 @@ public class Hilo extends Thread {
                         usuarios.add(i, mensaje.getUsuario());
                         usuarios = JsonUsuario.OrdenarPorHash(usuarios);
                         JsonUsuario.Escribir(usuarios);	
-                        vecino = BuscarUsuario.buscarUsuario(HashIp.calcularHashIp(socket.getInetAddress().toString()));
-                        mensaje.getUsuario().setDireccionVecino(vecino.getDireccionIP());
+                        vecinoSig = BuscarUsuario.buscarUsuario(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                        mensaje.getUsuario().setDireccionVecino(vecinoSig.getDireccionIP());
+                        System.out.println("si lo trajo " + vecinoSig.getDireccionIP());
+                        
+                        if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
+                            System.out.println("anterior ya tiene mi ip");
+                        }
+                        
                         oos.writeObject(mensaje);
                         oos.flush();
                     }
