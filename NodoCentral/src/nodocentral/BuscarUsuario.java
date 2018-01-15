@@ -31,18 +31,18 @@ public class BuscarUsuario {
 	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 	listaUsuarios = leyendo();
 	Usuario usuarioFinal = new Usuario();
-	for (int i = 0; i < listaUsuarios.size(); i++){
+	for (int i = 0; i <= listaUsuarios.size(); i++){
 		
             if ((listaUsuarios.get(i).getDireccionIPHash().equals(Hash))){
                 
-                if (i == 0){
-                    usuarioFinal = listaUsuarios.get((listaUsuarios.size()-1));
+                if (i == listaUsuarios.size()){
+                    usuarioFinal = listaUsuarios.get(0);
                     System.out.println("Consegui al usuario en el archivo");
                     break;
                 }
                 
                 else{
-		usuarioFinal = listaUsuarios.get(i-1);
+		usuarioFinal = listaUsuarios.get(i+1);
 		System.out.println("Consegui al usuario en el archivo");
 		break;
                 }
@@ -62,12 +62,12 @@ public class BuscarUsuario {
 	ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 	listaUsuarios = leyendo();
 	Usuario usuarioFinal = new Usuario();
-	for (int i = 0; i < listaUsuarios.size(); i++){
+	for (int i = 0; i <= listaUsuarios.size(); i++){
 		
             if ((listaUsuarios.get(i).getDireccionIPHash().equals(Hash))){
                 
                 if (i == 0){
-                    usuarioFinal = listaUsuarios.get((listaUsuarios.size()-1));
+                    usuarioFinal = listaUsuarios.get((listaUsuarios.size()));
                     System.out.println("Consegui al usuario en el archivo");
                     break;
                 }

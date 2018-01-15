@@ -45,6 +45,7 @@ public class Hilo extends Thread {
         Usuario vecinoAnt = new Usuario();
         
         try {
+            
             mensaje = (Mensaje)ois.readObject();
             System.out.println("NOMBRE" + mensaje.getOpcion());
             
@@ -116,7 +117,9 @@ public class Hilo extends Thread {
                     }
                 }
             }
-            
+        oos.close();
+        ois.close();
+        socket.close();    
         }
         catch (IOException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,7 +128,8 @@ public class Hilo extends Thread {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
+        
     
     }
     
