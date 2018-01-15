@@ -5,10 +5,13 @@
  */
 package nodoclienteservidor;
 
+import java.io.IOException;
 import pan.Mensaje;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import static nodoclienteservidor.JsonVecinoSig.LeerVecino;
+import pan.Recurso;
 
 /**
  *
@@ -25,7 +28,7 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			Socket socket = new Socket("190.198.195.104", 11000);
+			Socket socket = new Socket("Localhost", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -51,6 +54,38 @@ public class Peticion {
 				return "error";
 			}
 	}
+    
+    public static void BuscarEnVecinoRecurso (Mensaje mensaje) throws IOException, ClassNotFoundException{
+        String vecinoSig = null;
+        
+        
+        mensaje.setOpcion(7);
+        
+        vecinoSig = LeerVecino();        
+        
+        Socket socket = new Socket( vecinoSig, 11000);
+        
+                if(mensaje.getIpPregunton() != socket.getInetAddress().getHostAddress()){
+                    
+                    if( mensaje.getIpPregunton() == null){
+                        mensaje.setIpPregunton(socket.getInetAddress().getHostAddress());
+                    }
+			
+			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+
+			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			
+			oos.writeObject(mensaje);
+			oos.flush();
+                        
+			Mensaje recibido = (Mensaje) ois.readObject();
+                        
+                        oos.close();
+			ois.close();
+                        
+                }    
+    
+    }
     
     
     public static void BuscarRecurso(String nombre) {

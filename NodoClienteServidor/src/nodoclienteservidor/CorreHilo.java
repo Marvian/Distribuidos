@@ -5,14 +5,18 @@
  */
 package nodoclienteservidor;
 
+import pan.Recurso;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pan.Mensaje;
-import pan.Usuario;
+import pan.*;
 
 /**
  *
@@ -20,22 +24,23 @@ import pan.Usuario;
  */
 public class CorreHilo extends Thread {
     String tipo;
+    String nombre;
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
     CorreHilo( String tipo ){
         this.tipo = tipo;
     }
     public void run(){
         if ( tipo == "Servidor" ){
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            
             int respuesta = 0;
-            String nombre;
+            
             String contraseña;
             System.out.println("Inicando cliente");
             while ( respuesta != 9 ){
 
                 try {
                     System.out.println("1.- Registro");
-                    System.out.println("2.- Buscar recurso");
                     System.out.println("9.- Salir");
                     
                     respuesta = Integer.parseInt(br.readLine());
@@ -53,7 +58,7 @@ public class CorreHilo extends Thread {
                             System.out.println("despues de registrar");
                             
                             System.out.println("Usuario registrado");
-                            Recurso.obtenerRecursosEnDirectorio();
+                            obtenerRecursosEnDirectorio();
                             faseDos();
                             
                         }
@@ -80,9 +85,11 @@ public class CorreHilo extends Thread {
             CanalReceptor.Escuchando();
         }
     }
-    public void faseDos(){
+    public void faseDos() throws IOException, InterruptedException{
         
         Scanner sc = new Scanner(System.in);
+        
+        
         int respuesta2 = 0;
         
         while ( respuesta2 != 9 ){
@@ -98,10 +105,19 @@ public class CorreHilo extends Thread {
             respuesta2 = sc.nextInt();
             
             if (respuesta2 == 1 ){
+                
+                System.out.println("Insertar nombre del recurso");
+                nombre = br.readLine();
+                        
+                Peticion.BuscarRecurso(nombre);
+                        
+                Thread.sleep(1000);
+                
             }
             
             if (respuesta2 == 2 ){
-            }
+                
+            }            
             
             if (respuesta2 == 3 ){
             }
@@ -116,5 +132,33 @@ public class CorreHilo extends Thread {
             }
         }
         
+    }
+    
+    public static void obtenerRecursosEnDirectorio() {
+        try {
+            
+            System.out.println("Pasa por aqui");
+            final File baseDirectory = new File("");
+            final File directory = new File(baseDirectory.getCanonicalPath() + File.separator + "client-node-music");
+            final ArrayList<Recurso> resultList = new ArrayList();
+            
+            System.out.println(directory);
+
+            for (File musicFile : directory.listFiles()) {
+                final Recurso recurso = new Recurso();
+                recurso.setNombre(musicFile.getName());
+                recurso.setHashNombre(HashNombre.calcularHashNombre(musicFile.getName()));
+                recurso.setCantidad(1);
+                resultList.add(recurso);
+            }
+
+            JsonRecurso.EscribirRecursos(resultList);
+        }
+        catch (NoSuchAlgorithmException e) {
+            System.err.println(e);
+        }
+        catch (IOException e) {
+            System.err.println(e);
+        }
     }
 }

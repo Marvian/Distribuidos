@@ -20,7 +20,7 @@ public class CanalReceptor {
     public static void Escuchando (){
         
         ServerSocket ss;
-        System.out.println("Cliente/Servidor Fantasma listo para crear hilos");
+        System.out.println("Cliente/Servidor listo para crear hilos");
         
         try {
             ss = new ServerSocket(12000);

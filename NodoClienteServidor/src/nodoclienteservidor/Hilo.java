@@ -5,14 +5,18 @@
  */
 package nodoclienteservidor;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.simple.parser.ParseException;
 import pan.Mensaje;
+import pan.Recurso;
 import pan.Usuario;
 
 /**
@@ -40,15 +44,46 @@ public class Hilo extends Thread {
     
     public void run(){
         try{
-            System.out.println("LLEGO PETICION BITCH");
             mensaje = (Mensaje)ois.readObject();
-            System.out.println("IP"+ mensaje.getUsuario().getDireccionIP());
-            JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
-            oos.writeObject(mensaje);
-            oos.flush();
-            oos.close();
-            ois.close();
-            socket.close();
+            
+            if(mensaje.getOpcion() == 8){
+                System.out.println("LLEGO PETICION BITCH");
+                
+                System.out.println("IP"+ mensaje.getUsuario().getDireccionIP());
+                JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
+                oos.writeObject(mensaje);
+                oos.flush();
+                oos.close();
+                ois.close();
+                socket.close();
+            }
+            
+            if(mensaje.getOpcion() == 7){                
+                System.out.println("Esta buscando");
+                boolean consiguio = false;
+                
+                ArrayList<Recurso> recursosLocales = JsonRecurso.obtenerRecursosLocales();
+                 for (Recurso recursoLocal : recursosLocales) {
+                    if (recursoLocal.getNombre().equals(mensaje.getRecurso().getNombre())) {
+                        consiguio = true;
+                        break;
+                    }
+                
+                if(consiguio == true){
+                // crear hilo para la descarga
+                }
+                    
+        }
+                     
+                
+                oos.writeObject(mensaje);
+                oos.flush();
+                oos.close();
+                ois.close();
+                socket.close();
+            
+            }
+            
                         
         
        
@@ -58,6 +93,8 @@ public class Hilo extends Thread {
         } catch (IOException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -25,6 +25,7 @@ public class Peticion {
             Socket socket = new Socket(ip, 12000);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            mensaje.setOpcion(8);
             oos.writeObject(mensaje);
             oos.flush();
                         

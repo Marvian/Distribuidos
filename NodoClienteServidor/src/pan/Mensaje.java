@@ -15,10 +15,12 @@ public class Mensaje implements Serializable {
 
    private static final long serialVersionUID = 1113799434508676095L; 
    private Usuario usuario;
+   private Recurso recurso;
    private int puerto;
    private int[] byteParaEnvio;
    private boolean byteFinal;
    private int opcion; 
+   private String ipPregunton;
    
    public Mensaje () {
        this.usuario = null;
@@ -96,4 +98,32 @@ public class Mensaje implements Serializable {
     public void setOpcion(int opcion) {
         this.opcion = opcion;
     }
+
+    /**
+     * @return the recurso
+     */
+    public Recurso getRecurso() {
+        return recurso;
+    }
+
+    /**
+     * @param recurso the recurso to set
+     */
+    public void setRecurso(Recurso recurso) {
+        this.recurso = recurso;
+    }
+
+    /**
+     * @return the ipPregunton
+     */
+    public String getIpPregunton() {
+        return ipPregunton;
+    }
+
+    /**
+     * @param ipPregunton the ipPregunton to set
+     */
+    public void setIpPregunton(String ipPregunton) {
+        this.ipPregunton = ipPregunton;
+    }    
 }

@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nodoclienteservidor;
+package pan;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -62,33 +61,5 @@ public class Recurso implements Serializable {
      */
     public void setCantidad(long cantidad) {
         this.cantidad = cantidad;
-    }
-    
-    public static void obtenerRecursosEnDirectorio() {
-        try {
-            
-            System.out.println("Pasa por aqui");
-            final File baseDirectory = new File("");
-            final File directory = new File(baseDirectory.getCanonicalPath() + File.separator + "client-node-music");
-            final ArrayList<Recurso> resultList = new ArrayList();
-            
-            System.out.println(directory);
-
-            for (File musicFile : directory.listFiles()) {
-                final Recurso recurso = new Recurso();
-                recurso.setNombre(musicFile.getName());
-                recurso.setHashNombre(HashNombre.calcularHashNombre(musicFile.getName()));
-                recurso.setCantidad(1);
-                resultList.add(recurso);
-            }
-
-            JsonRecurso.EscribirRecursos(resultList);
-        }
-        catch (NoSuchAlgorithmException e) {
-            System.err.println(e);
-        }
-        catch (IOException e) {
-            System.err.println(e);
-        }
-    }
+    }    
 }

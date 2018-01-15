@@ -5,11 +5,14 @@
  */
 package nodoclienteservidor;
 
+import pan.Recurso;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import static nodoclienteservidor.Peticion.BuscarEnVecinoRecurso;
 import org.json.simple.parser.ParseException;
+import pan.Mensaje;
 
 /**
  *
@@ -35,6 +38,10 @@ public class HiloBusquedaRecurso extends Thread {
                 Download.downloadFileLocal(path, _nombreRecurso);
             } else {
                 System.out.println("Buscando recurso en otro nodo");
+                Recurso recurso = new Recurso(_nombreRecurso, "" ,0);
+                Mensaje mensaje = new Mensaje();
+                mensaje.setRecurso(recurso);
+                BuscarEnVecinoRecurso (mensaje);
             }
         }
         catch (Exception e) {
