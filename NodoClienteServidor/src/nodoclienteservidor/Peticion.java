@@ -29,7 +29,11 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
+<<<<<<< Updated upstream
 			Socket socket = new Socket("Localhost", 11000);
+=======
+			Socket socket = new Socket("192.168.43.143", 11000);
+>>>>>>> Stashed changes
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
