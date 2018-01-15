@@ -107,6 +107,7 @@ public class Hilo extends Thread {
                         
                         mensaje.getUsuario().setDireccionVecino(vecinoSig.getDireccionIP());
                         System.out.println("si lo trajo " + vecinoSig.getDireccionIP());
+                        System.out.println("si lo trajo ANT" + vecinoAnt.getDireccionIP());
                         
                         if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
                             System.out.println("anterior ya tiene mi ip");

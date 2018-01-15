@@ -27,6 +27,7 @@ public class CanalReceptor {
             System.out.println("\t[OK]");
             int idSession = 0;
             while (true) {
+                System.out.println("PAN");
                 Socket socket;
                 socket = ss.accept();
                 System.out.println("Nuevo nodo: "+socket);
