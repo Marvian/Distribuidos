@@ -23,7 +23,7 @@ public class CanalReceptor {
         System.out.println("Cliente/Servidor Fantasma listo para crear hilos");
         
         try {
-            ss = new ServerSocket(11000);
+            ss = new ServerSocket(12000);
             System.out.println("\t[OK]");
             int idSession = 0;
             while (true) {
