@@ -129,6 +129,12 @@ public class CorreHilo extends Thread {
             }
             
             if (respuesta2 == 9 ){
+                System.out.println("SALIDA DE NODO");
+                Mensaje mensajesalida = new  Mensaje();
+                mensajesalida.setOpcion(24);
+                Peticion.salida(mensajesalida);
+                
+                        
             }
         }
         

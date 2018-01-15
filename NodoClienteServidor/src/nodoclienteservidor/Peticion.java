@@ -100,4 +100,35 @@ public class Peticion {
         hiloBusquedaRecurso.start();
         
     }
-}
+    
+    public static String salida (Mensaje mensaje){
+        try{
+			
+			Socket socket = new Socket("Localhost", 11000);
+			
+			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+
+			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+			
+			oos.writeObject(mensaje);
+			oos.flush();
+                        
+			Mensaje recibido = (Mensaje) ois.readObject();                        
+                      
+                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
+			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
+                        
+                        String prueba = null;
+                        System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
+                        
+			oos.close();
+			ois.close();
+			
+			return "Salida Exitosa";
+		}
+			catch(Exception e1){
+				return "error";
+			}
+	}
+    
+    }

@@ -118,6 +118,29 @@ public class Hilo extends Thread {
                     }
                 }
             }
+            
+            if (mensaje.getOpcion() == 24) {
+                System.out.println("AVISO");
+                System.out.println("El usuario "+this.sesionActual+" saldrá del nodo");
+            	//System.out.println("Este es el usuario "+mensaje.getUsuario().getUsuario());
+            	
+                //mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());
+                String IPact = socket.getInetAddress().toString();
+                
+                vecinoSig = BuscarUsuario.buscarUsuarioSig(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                String IPsig = (socket.getInetAddress().toString());
+                vecinoAnt = BuscarUsuario.buscarUsuarioAnt(HashIp.calcularHashIp(socket.getInetAddress().toString()));
+                String IPant = (socket.getInetAddress().toString());    
+                       
+                mensaje.getUsuario().setDireccionVecino(vecinoSig.getDireccionIP());
+                System.out.println("Vecino Siguiente" + vecinoSig.getDireccionIP());
+                System.out.println("Vecino Anterior" + vecinoAnt.getDireccionIP());
+                
+                if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
+                System.out.println("Se ha asignado la IP del vecino correctamente");
+                }
+            }
+            
         oos.close();
         ois.close();
         socket.close();    
