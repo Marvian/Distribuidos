@@ -5,6 +5,7 @@
  */
 package nodoclienteservidor;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import pan.Mensaje;
 import java.io.ObjectInputStream;
@@ -28,7 +29,7 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			Socket socket = new Socket("192.168.43.48", 11000);
+			Socket socket = new Socket("Localhost", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -39,8 +40,8 @@ public class Peticion {
                         
 			Mensaje recibido = (Mensaje) ois.readObject();                        
                       
-                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
-			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
+                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionIP());
+			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionIP());
                         
                         String prueba = null;
                         System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
@@ -84,7 +85,15 @@ public class Peticion {
 			oos.writeObject(mensaje);
 			oos.flush();
                         
+                        
+                        FileOutputStream fos = new FileOutputStream(mensaje.getRecurso()+".pdf");
 			Mensaje recibido = (Mensaje) ois.readObject();
+			System.out.println("El nombre es: " + recibido.getRecurso());
+			long hola = recibido.getOpcion();
+			for (int i = 0; i < recibido.getByteParaEnvio().length-1; i++){ 
+				fos.write(recibido.getByteParaEnvio()[i]);
+				System.out.println("Van " + i + " de " + hola);
+			}
                         
                         oos.close();
 			ois.close();
@@ -120,6 +129,8 @@ public class Peticion {
                         
                         String prueba = null;
                         System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
+                        
+                        
                         
 			oos.close();
 			ois.close();

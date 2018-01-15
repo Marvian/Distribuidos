@@ -145,5 +145,28 @@ public class JsonUsuario {
         return usuariosOrdenado;
     }
     
+    public static void EliminarUsuario(String ip) throws IOException {
+        
+        ArrayList<Usuario> nuevaLista = new ArrayList<Usuario>();
+        
+        File archivo = null;
+		
+	usuarios = Leer();
+        
+        for (int i = 0; i < usuarios.size(); i++){
+            
+            if ((usuarios.get(i).getDireccionIP().equals(ip))){
+                i++;               
+            
+            }
+            else {
+             nuevaLista.add(i, usuarios.get(i));
+            }          
+            
+            Escribir(nuevaLista);
+        
+        }
+            
+    }
     
 }

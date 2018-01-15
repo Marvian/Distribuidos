@@ -106,7 +106,7 @@ public class Hilo extends Thread {
                         vecinoAnt = BuscarUsuario.buscarUsuarioAnt(HashIp.calcularHashIp(socket.getInetAddress().toString()));
                         
                         mensaje.getUsuario().setDireccionVecino(vecinoSig.getDireccionIP());
-                        System.out.println("si lo trajo " + vecinoSig.getDireccionIP());
+                        System.out.println("si lo trajo Sig" + vecinoSig.getDireccionIP());
                         System.out.println("si lo trajo ANT" + vecinoAnt.getDireccionIP());
                         
                         if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
@@ -139,7 +139,10 @@ public class Hilo extends Thread {
                 if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
                 System.out.println("Se ha asignado la IP del vecino correctamente");
                 }
+                JsonUsuario.EliminarUsuario(IPact);
             }
+            
+            
             
         oos.close();
         ois.close();
