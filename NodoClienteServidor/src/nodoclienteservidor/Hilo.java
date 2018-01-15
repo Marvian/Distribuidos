@@ -42,7 +42,8 @@ public class Hilo extends Thread {
         try{
             System.out.println("LLEGO PETICION BITCH");
             mensaje = (Mensaje)ois.readObject();
-            JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionVecino());
+            System.out.println("IP"+ mensaje.getUsuario().getDireccionIP());
+            JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
             oos.writeObject(mensaje);
             oos.flush();
             oos.close();

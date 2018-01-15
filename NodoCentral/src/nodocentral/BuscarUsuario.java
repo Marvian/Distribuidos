@@ -53,7 +53,7 @@ public class BuscarUsuario {
             }
 	}
 	
-        System.out.println("ipVecino" + usuarioFinal.getDireccionIPHash());
+        System.out.println("ipVecinoSIg" + usuarioFinal.getDireccionIPHash());
 	return usuarioFinal;
 	
     }
@@ -63,7 +63,7 @@ public class BuscarUsuario {
 	listaUsuarios = leyendo();
 	Usuario usuarioFinal = new Usuario();
 	for (int i = 0; i < listaUsuarios.size(); i++){
-		
+            System.out.println("NOMBRE" + listaUsuarios.get(i).getUsuario());
             if ((listaUsuarios.get(i).getDireccionIPHash().equals(Hash))){
                 
                 if (i == 0){
@@ -84,7 +84,7 @@ public class BuscarUsuario {
             }
 	}
 	
-        System.out.println("ipVecino" + usuarioFinal.getDireccionIPHash());
+        System.out.println("ipVecinoAnt" + usuarioFinal.getDireccionIPHash());
 	return usuarioFinal;
 	
     }

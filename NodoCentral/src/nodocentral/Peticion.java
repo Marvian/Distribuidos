@@ -20,22 +20,18 @@ import pan.Mensaje;
 public class Peticion {
     
     public static String ConoceVecino (Mensaje mensaje, String ip ){
-        System.out.println("Nueva Peticion");
         try { 
+            String ip2 = ip;
             Socket socket = new Socket(ip, 12000);
-			
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-			
             oos.writeObject(mensaje);
             oos.flush();
                         
             Mensaje recibido = (Mensaje) ois.readObject();
-			
             oos.close();
             ois.close();
-    
+            socket.close();
             return "Nuevo vecino";
         } 
         
