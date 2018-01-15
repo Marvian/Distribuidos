@@ -1,6 +1,9 @@
+package nodoclienteservidor;
+
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import pan.Mensaje;
@@ -17,57 +20,54 @@ import pan.Mensaje;
  */
 public class EnvioRecurso implements Serializable {
     
-   /* public void cargandoLibro(String nombreLibro, ObjectOutputStream oos){
+    public static void cargandoRecurso(String nombreRecurso, ObjectOutputStream oos){
 		File archivo = null;
 		File miDir = new File (".");
 		Mensaje envio = new Mensaje();
 		int total = 0;
 		try {
-			archivo = new File (miDir.getCanonicalPath()+"/"+nombreLibro+".pdf");
+			archivo = new File (miDir.getCanonicalPath()+"/"+nombreRecurso);
 			@SuppressWarnings("resource")
 			FileInputStream fis = new FileInputStream(archivo);
 			FileInputStream fisDos = new FileInputStream(archivo);
-			System.out.println("Direccion del archivo: " +miDir.getCanonicalPath()+"/"+nombreLibro+".pdf");
-    			System.out.println("Lo que puedo cargar" +envio.getContenidoFichero());
+			System.out.println("Direccion del archivo: " +miDir.getCanonicalPath()+"/"+nombreRecurso);
+    			System.out.println("Lo que puedo cargar" +envio.getByteParaEnvio());
 			int contador = 0;
-			while (!envio.isBytesFinales()){
+			while (!envio.isByteFinal()){
 				int bytesLeidos = fis.read();
 				System.out.println(bytesLeidos);
 				if (bytesLeidos == -1)
-                    envio.setBytesFinales(true);
+                    envio.setByteFinal(true);
 				contador++;
 				
 			}
-			envio.setBytesFinales(false);
+			envio.setByteFinal(false);
 			int bytesEntrada[] = new int[contador];
 			contador = 0;
-			while (!envio.isBytesFinales()){
+			while (!envio.isByteFinal()){
 				int bytesLeidos = fisDos.read();
 				if (bytesLeidos != -1){
 					bytesEntrada[contador] = bytesLeidos;
 					total = contador;
 				}
 				else{
-					envio.setBytesFinales(true);
+					envio.setByteFinal(true);
 				}
 				contador++;
 			}
 			System.out.println("Valor total: " +total);
 			envio.setOpcion(total);
-			envio.setContenidoFichero(bytesEntrada);
-			System.out.println("Estoy enviando este array: " +envio.getContenidoFichero());
+			envio.setByteParaEnvio(bytesEntrada);
+			System.out.println("Estoy enviando este array: " +envio.getByteParaEnvio());
 			oos.writeObject(envio);
 			fis.close();
 			fisDos.close();
 			oos.close();
 			
-			long cantidad = LeerJson.LeerCantidadClientes();
-			cantidad = cantidad + 1;
-			EscribirJson.EscribirCantidad(cantidad);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+	}
     
 }

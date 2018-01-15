@@ -65,7 +65,10 @@ public class Hilo extends Thread {
                 ArrayList<Recurso> recursosLocales = JsonRecurso.obtenerRecursosLocales();
                  for (Recurso recursoLocal : recursosLocales) {
                     if (recursoLocal.getNombre().equals(mensaje.getRecurso().getNombre())) {
+                        
                         consiguio = true;
+                        System.out.println(consiguio);
+                        EnvioRecurso.cargandoRecurso(mensaje.getRecurso().getNombre(), oos);
                         break;
                     }
                 

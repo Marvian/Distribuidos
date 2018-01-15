@@ -28,7 +28,7 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			Socket socket = new Socket("Localhost", 11000);
+			Socket socket = new Socket("192.168.43.48", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -57,13 +57,19 @@ public class Peticion {
     
     public static void BuscarEnVecinoRecurso (Mensaje mensaje) throws IOException, ClassNotFoundException{
         String vecinoSig = null;
+        String array[] = null;
+        System.out.println("entre en la peticion");
         
         
         mensaje.setOpcion(7);
         
-        vecinoSig = LeerVecino();        
+        vecinoSig = LeerVecino();
+        array = vecinoSig.split("/");
         
-        Socket socket = new Socket( vecinoSig, 11000);
+        System.out.println(vecinoSig);
+        
+        Socket socket = new Socket( vecinoSig, 12000);
+        System.out.println("vecinoSig");
         
                 if(mensaje.getIpPregunton() != socket.getInetAddress().getHostAddress()){
                     

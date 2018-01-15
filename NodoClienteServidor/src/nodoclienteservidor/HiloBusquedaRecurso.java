@@ -41,7 +41,8 @@ public class HiloBusquedaRecurso extends Thread {
                 Recurso recurso = new Recurso(_nombreRecurso, "" ,0);
                 Mensaje mensaje = new Mensaje();
                 mensaje.setRecurso(recurso);
-                BuscarEnVecinoRecurso (mensaje);
+                System.out.println("listo para la peticion");
+                Peticion.BuscarEnVecinoRecurso(mensaje);
             }
         }
         catch (Exception e) {
