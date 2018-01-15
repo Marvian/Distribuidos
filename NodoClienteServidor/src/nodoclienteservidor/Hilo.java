@@ -40,9 +40,14 @@ public class Hilo extends Thread {
     
     public void run(){
         try{
-        
-        mensaje = (Mensaje)ois.readObject();
-        JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionVecino());
+            System.out.println("LLEGO PETICION BITCH");
+            mensaje = (Mensaje)ois.readObject();
+            JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionVecino());
+            oos.writeObject(mensaje);
+            oos.flush();
+            oos.close();
+            ois.close();
+            socket.close();
                         
         
        

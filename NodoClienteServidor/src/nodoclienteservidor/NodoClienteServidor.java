@@ -24,8 +24,9 @@ public class NodoClienteServidor {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        new CorreHilo("Cliente").start();
+        new CorreHilo("Servidor").start();
+        /*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int respuesta = 0;
         String nombre;
         String contraseña;
@@ -53,6 +54,7 @@ public class NodoClienteServidor {
                     System.out.println("Usuario registrado");
                     Recurso.obtenerRecursosEnDirectorio();
                     faseDos();
+                    
                 }
                 else{
                     System.out.println("Ese usuario ya existe");
@@ -66,10 +68,10 @@ public class NodoClienteServidor {
                 Thread.sleep(1000);
             }
         
-        }
+        }*/
     }
     
-    public static void faseDos(){
+    /*public static void faseDos(){
         
         Scanner sc = new Scanner(System.in);
         int respuesta2 = 0;
@@ -105,7 +107,7 @@ public class NodoClienteServidor {
             }
         }
         
-    }
+    }*/
 }
     
 

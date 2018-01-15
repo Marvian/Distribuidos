@@ -96,7 +96,7 @@ public class Hilo extends Thread {
                         catch(FileNotFoundException e){
                             System.out.println("Archivo vacio.");
                         }	
-
+                        
                         mensaje.getUsuario().setDireccionIP(socket.getInetAddress().toString());
                         mensaje.getUsuario().setDireccionIPHash(HashIp.calcularHashIp(socket.getInetAddress().toString()));
                         usuarios.add(i, mensaje.getUsuario());

@@ -20,9 +20,9 @@ import pan.Mensaje;
 public class Peticion {
     
     public static String ConoceVecino (Mensaje mensaje, String ip ){
-        
+        System.out.println("Nueva Peticion");
         try { 
-            Socket socket = new Socket(ip, 11000);
+            Socket socket = new Socket(ip, 12000);
 			
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
