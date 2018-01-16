@@ -47,9 +47,8 @@ public class Hilo extends Thread {
             mensaje = (Mensaje)ois.readObject();
             
             if(mensaje.getOpcion() == 8){
-                System.out.println("LLEGO PETICION BITCH");
                 
-                System.out.println("IP"+ mensaje.getUsuario().getDireccionIP());
+                System.out.println("IP de mi vecino siguiente"+ mensaje.getUsuario().getDireccionIP());
                 JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
                 oos.writeObject(mensaje);
                 oos.flush();
@@ -60,7 +59,7 @@ public class Hilo extends Thread {
                 boolean consiguio = false;
                 
                 ArrayList<Recurso> recursosLocales = JsonRecurso.obtenerRecursosLocales();
-                 for (Recurso recursoLocal : recursosLocales) {
+                for (Recurso recursoLocal : recursosLocales) {
                     if (recursoLocal.getNombre().equals(mensaje.getRecurso().getNombre())) {
                         
                         consiguio = true;
@@ -69,11 +68,10 @@ public class Hilo extends Thread {
                         break;
                     }
                 
-                if(consiguio == true){
-                // crear hilo para la descarga
+                    if(consiguio == true){
+                    // crear hilo para la descarga
+                    }
                 }
-                    
-        }
                      
                 
                 //oos.writeObject(mensaje);
@@ -85,9 +83,9 @@ public class Hilo extends Thread {
         
        
         oos.flush();
-             oos.close();
-                ois.close();
-                socket.close();
+        oos.close();
+        ois.close();
+        socket.close();
         
         
         } catch (IOException ex) {

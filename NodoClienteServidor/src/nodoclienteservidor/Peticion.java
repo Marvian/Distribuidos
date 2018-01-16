@@ -31,8 +31,6 @@ public class Peticion {
 			
 
 			Socket socket = new Socket("Localhost", 11000);
-
-
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -41,18 +39,17 @@ public class Peticion {
 			oos.writeObject(mensaje);
 			oos.flush();
                         
-			Mensaje recibido = (Mensaje) ois.readObject();                        
-                      
+			Mensaje recibido = (Mensaje) ois.readObject();                     
 
-                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
+                        System.out.println("mi vecino siguiente" + recibido.getUsuario().getDireccionVecino());
 
 			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
-                        
-                        String prueba = null;
-                        System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
+                       
+                        System.out.println("Json VecinoSig" + JsonVecinoSig.LeerVecino());
                         
 			oos.close();
 			ois.close();
+                        socket.close();
 			
 			return "Registrado";
 		}
@@ -65,8 +62,7 @@ public class Peticion {
         String vecinoSig = null;
         String array[] = null;
         System.out.println("entre en la peticion");
-        
-        
+                
         mensaje.setOpcion(7);
         
         vecinoSig = LeerVecino();
@@ -102,6 +98,7 @@ public class Peticion {
                         
                         oos.close();
 			ois.close();
+                        socket.close();
                         
                 }    
     
@@ -118,33 +115,33 @@ public class Peticion {
     public static String salida (Mensaje mensaje){
         try{
 			
-			Socket socket = new Socket("192.168.43.195", 11000);
-			
-			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+		Socket socket = new Socket("192.168.43.195", 11000);
+		
+		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-			ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 			
-			oos.writeObject(mensaje);
-			oos.flush();
+		oos.writeObject(mensaje);
+		oos.flush();
                         
-			Mensaje recibido = (Mensaje) ois.readObject();                        
+		Mensaje recibido = (Mensaje) ois.readObject();                        
                       
-                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
-			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
+                System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
+		JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
                         
-                        String prueba = null;
-                        System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
+                String prueba = null;
+                System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());                       
                         
-                        
-                        
-			oos.close();
-			ois.close();
+		oos.close();
+		ois.close();
+                socket.close();
 			
-			return "Salida Exitosa";
-		}
-			catch(Exception e1){
-				return "error";
-			}
+		return "Salida Exitosa";
+        }
+	
+        catch(Exception e1){
+            return "error";
 	}
-    
     }
+    
+}

@@ -65,14 +65,7 @@ public class CorreHilo extends Thread {
                         else{
                             System.out.println("Ese usuario ya existe");
                         }
-                    } else if (respuesta == 2) {
-                        System.out.println("Insertar nombre del recurso");
-                        nombre = br.readLine();
-                        
-                        Peticion.BuscarRecurso(nombre);
-                        
-                        Thread.sleep(1000);
-                    }
+                    } 
                 } catch (IOException ex) {
                     Logger.getLogger(CorreHilo.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InterruptedException ex) {

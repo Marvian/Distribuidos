@@ -48,15 +48,13 @@ public class Hilo extends Thread {
             
             mensaje = (Mensaje)ois.readObject();
             System.out.println("NOMBRE" + mensaje.getOpcion());
-            
-            
+  
             if(mensaje.getOpcion() == 1){
             	System.out.println("Un usuario "+this.sesionActual+" solicita registrarse");
             	System.out.println("Este es el usuario "+mensaje.getUsuario().getUsuario());
             	
             	try{
-                    usuarios = JsonUsuario.Leer();
-                    
+                    usuarios = JsonUsuario.Leer();                    
 	        }
 	        
                 catch(FileNotFoundException e){
@@ -110,7 +108,7 @@ public class Hilo extends Thread {
                         System.out.println("si lo trajo ANT" + vecinoAnt.getDireccionIP());
                         
                         if (Peticion.ConoceVecino(mensaje, vecinoAnt.getDireccionIP()).equals("Nuevo vecino")){
-                            System.out.println("anterior ya tiene mi ip");
+                            System.out.println("el vecinoAnt de " + mensaje.getUsuario().getUsuario() + "ya sabe quien es") ;
                         }
                         
                         oos.writeObject(mensaje);

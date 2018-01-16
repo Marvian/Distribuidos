@@ -21,15 +21,13 @@ public class Peticion {
     
     public static String ConoceVecino (Mensaje mensaje, String ip ){
         try { 
-            String ip2 = ip;
             Socket socket = new Socket(ip, 12000);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            mensaje.setOpcion(8);
+            mensaje.setOpcion(8);            
             oos.writeObject(mensaje);
-            oos.flush();
-                        
-            Mensaje recibido = (Mensaje) ois.readObject();
+            
+            oos.flush();                       
             oos.close();
             ois.close();
             socket.close();
