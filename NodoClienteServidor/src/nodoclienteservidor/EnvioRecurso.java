@@ -30,7 +30,7 @@ public class EnvioRecurso implements Serializable {
 		Mensaje envio = new Mensaje();
 		int total = 0;
 		try {
-			archivo = new File (miDir.getCanonicalPath()+"/client-node-music/"+nombreRecurso);
+			archivo = new File (miDir.getCanonicalPath()+ File.separator + "client-node-music" + File.separator+ nombreRecurso);
 			@SuppressWarnings("resource")
 			FileInputStream fis = new FileInputStream(archivo);
 			FileInputStream fisDos = new FileInputStream(archivo);
@@ -59,7 +59,9 @@ public class EnvioRecurso implements Serializable {
 				}
 				contador++;
 			}
-			System.out.println("Valor total: " +total);
+			//contador comienza en 0, por eso sumo 1 para tener el total del archivo
+                        total = contador + 1;
+                        System.out.println("Valor total: " +total);
 			envio.setOpcion(total);
 			envio.setByteParaEnvio(bytesEntrada);
 			System.out.println("Estoy enviando este array: " +envio.getByteParaEnvio());
