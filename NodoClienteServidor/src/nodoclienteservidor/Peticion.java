@@ -29,7 +29,8 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			Socket socket = new Socket("192.168.43.195", 11000);
+			Socket socket = new Socket("Localhost", 11000);
+
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
