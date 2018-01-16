@@ -47,7 +47,7 @@ public class EnvioRecurso implements Serializable {
 			}
 			envio.setByteFinal(false);
 			int bytesEntrada[] = new int[contador];
-			contador = 0;
+			contador = 1;
 			while (!envio.isByteFinal()){
 				int bytesLeidos = fisDos.read();
 				if (bytesLeidos != -1){
@@ -59,17 +59,19 @@ public class EnvioRecurso implements Serializable {
 				}
 				contador++;
 			}
-			//contador comienza en 0, por eso sumo 1 para tener el total del archivo
-                        total = contador + 1;
+			
                         System.out.println("Valor total: " +total);
 			envio.setOpcion(total);
 			envio.setByteParaEnvio(bytesEntrada);
 			System.out.println("Estoy enviando este array: " +envio.getByteParaEnvio());
                         ArrayList<Recurso> res = JsonRecurso.obtenerRecursosLocales();
+                        System.out.println("Recurso que busco"+ nombreRecurso);
                         for (int k = 0; k < res.size(); k++){
-                            res.get(k).getNombre();
-                            if ( res.get(k).getNombre() == nombreRecurso )
+                            System.out.println("Recurso que trae del json"+ res.get(k).getNombre());
+                         
+                            if ( res.get(k).getNombre() == nombreRecurso ){
                                 res.get(k).setCantidad(res.get(k).getCantidad()+1);
+                            }
                         }
 			oos.writeObject(envio);
 			fis.close();

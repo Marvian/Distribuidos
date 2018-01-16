@@ -23,9 +23,9 @@ import pan.*;
  * @author gilbert
  */
 public class CorreHilo extends Thread {
-    String tipo;
-    String nombre;
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+   static String tipo;
+   static String nombre;
+   static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
     CorreHilo( String tipo ){
         this.tipo = tipo;
@@ -78,7 +78,7 @@ public class CorreHilo extends Thread {
             CanalReceptor.Escuchando();
         }
     }
-    public void faseDos() throws IOException, InterruptedException{
+    public static void faseDos() throws IOException, InterruptedException{
         
         Scanner sc = new Scanner(System.in);
         
@@ -147,7 +147,7 @@ public class CorreHilo extends Thread {
                 final Recurso recurso = new Recurso();
                 recurso.setNombre(musicFile.getName());
                 recurso.setHashNombre(HashNombre.calcularHashNombre(musicFile.getName()));
-                recurso.setCantidad(1);
+                recurso.setCantidad(0);
                 resultList.add(recurso);
             }
 

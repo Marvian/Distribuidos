@@ -30,7 +30,7 @@ public class Peticion {
 		try{
 			
 
-			Socket socket = new Socket("190.79.113.102", 11000);
+			Socket socket = new Socket("LocalHost", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -58,7 +58,7 @@ public class Peticion {
 			}
 	}
     
-    public static void BuscarEnVecinoRecurso (Mensaje mensaje) throws IOException, ClassNotFoundException{
+    public static void BuscarEnVecinoRecurso (Mensaje mensaje) throws IOException, ClassNotFoundException, InterruptedException{
         String vecinoSig = null;
         String array[] = null;
         System.out.println("entre en la peticion");
@@ -86,19 +86,23 @@ public class Peticion {
 			oos.writeObject(mensaje);
 			oos.flush();
                         
-                        
-                        FileOutputStream fos = new FileOutputStream(mensaje.getRecurso()+".pdf");
-			Mensaje recibido = (Mensaje) ois.readObject();
+                        System.out.println(mensaje.getRecurso());
+                        FileOutputStream fos = new FileOutputStream(mensaje.getRecurso()+".txt");
+			                 System.out.println(fos);
+                        Mensaje recibido = (Mensaje) ois.readObject();
 			System.out.println("El nombre es: " + recibido.getRecurso());
 			long hola = recibido.getOpcion();
-			for (int i = 0; i < recibido.getByteParaEnvio().length-1; i++){ 
+			for (int i = 0; i < recibido.getByteParaEnvio().length; i++){ 
 				fos.write(recibido.getByteParaEnvio()[i]);
 				System.out.println("Van " + i + " de " + hola);
 			}
                         
+                        fos.close();
                         oos.close();
 			ois.close();
                         socket.close();
+                        
+                        CorreHilo.faseDos();
                         
                 }    
     
@@ -115,7 +119,7 @@ public class Peticion {
     public static String salida (Mensaje mensaje){
         try{
 			
-		Socket socket = new Socket("190.79.113.102", 11000);
+		Socket socket = new Socket("LocalHost", 11000);
 		
 		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
