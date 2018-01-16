@@ -30,7 +30,7 @@ public class EnvioRecurso implements Serializable {
 		Mensaje envio = new Mensaje();
 		int total = 0;
 		try {
-			archivo = new File (miDir.getCanonicalPath()+"/client-node-music/"+nombreRecurso);
+			archivo = new File (miDir.getCanonicalPath()+ File.separator + "client-node-music" + File.separator+ nombreRecurso);
 			@SuppressWarnings("resource")
 			FileInputStream fis = new FileInputStream(archivo);
 			FileInputStream fisDos = new FileInputStream(archivo);
