@@ -86,8 +86,10 @@ public class Peticion {
 			oos.writeObject(mensaje);
 			oos.flush();
                         
+                        //impreme algo raro
                         System.out.println(mensaje.getRecurso());
                         FileOutputStream fos = new FileOutputStream(mensaje.getRecurso()+".txt");
+                        //algo aun mas raro
 			                 System.out.println(fos);
                         Mensaje recibido = (Mensaje) ois.readObject();
 			System.out.println("El nombre es: " + recibido.getRecurso());
