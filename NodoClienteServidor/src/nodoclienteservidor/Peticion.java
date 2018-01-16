@@ -30,7 +30,7 @@ public class Peticion {
 		try{
 			
 
-			Socket socket = new Socket("Localhost", 11000);
+			Socket socket = new Socket("190.79.113.102", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -115,7 +115,7 @@ public class Peticion {
     public static String salida (Mensaje mensaje){
         try{
 			
-		Socket socket = new Socket("192.168.43.195", 11000);
+		Socket socket = new Socket("190.79.113.102", 11000);
 		
 		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
