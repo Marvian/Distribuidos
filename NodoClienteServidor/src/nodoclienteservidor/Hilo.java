@@ -53,9 +53,7 @@ public class Hilo extends Thread {
                 JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
                 oos.writeObject(mensaje);
                 oos.flush();
-                oos.close();
-                ois.close();
-                socket.close();
+               
             }
             
             if(mensaje.getOpcion() == 7){                

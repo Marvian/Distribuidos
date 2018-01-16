@@ -29,7 +29,7 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
-			Socket socket = new Socket("Localhost", 11000);
+			Socket socket = new Socket("192.168.43.195", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -41,7 +41,7 @@ public class Peticion {
 			Mensaje recibido = (Mensaje) ois.readObject();                        
                       
                         System.out.println("mi vecino" + recibido.getUsuario().getDireccionIP());
-			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionIP());
+			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
                         
                         String prueba = null;
                         System.out.println("ESTA VIVO" + JsonVecinoSig.LeerVecino());
@@ -113,7 +113,7 @@ public class Peticion {
     public static String salida (Mensaje mensaje){
         try{
 			
-			Socket socket = new Socket("Localhost", 11000);
+			Socket socket = new Socket("192.168.43.195", 11000);
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
