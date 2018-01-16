@@ -3,10 +3,14 @@ package nodoclienteservidor;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import org.json.simple.parser.ParseException;
 import pan.Mensaje;
+import pan.Recurso;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +24,7 @@ import pan.Mensaje;
  */
 public class EnvioRecurso implements Serializable {
     
-    public static void cargandoRecurso(String nombreRecurso, ObjectOutputStream oos){
+    public static void cargandoRecurso(String nombreRecurso, ObjectOutputStream oos) throws FileNotFoundException, ParseException{
 		File archivo = null;
 		File miDir = new File (".");
 		Mensaje envio = new Mensaje();
@@ -59,11 +63,17 @@ public class EnvioRecurso implements Serializable {
 			envio.setOpcion(total);
 			envio.setByteParaEnvio(bytesEntrada);
 			System.out.println("Estoy enviando este array: " +envio.getByteParaEnvio());
+                        ArrayList<Recurso> res = JsonRecurso.obtenerRecursosLocales();
+                        for (int k = 0; k < res.size(); k++){
+                            res.get(k).getNombre();
+                            if ( res.get(k).getNombre() == nombreRecurso )
+                                res.get(k).setCantidad(res.get(k).getCantidad()+1);
+                        }
 			oos.writeObject(envio);
 			fis.close();
 			fisDos.close();
 			oos.close();
-			
+			JsonRecurso.EscribirRecursos(res);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

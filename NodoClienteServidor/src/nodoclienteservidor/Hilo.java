@@ -53,9 +53,6 @@ public class Hilo extends Thread {
                 JsonVecinoSig.EscriboVecino(mensaje.getUsuario().getDireccionIP());
                 oos.writeObject(mensaje);
                 oos.flush();
-                oos.close();
-                ois.close();
-                socket.close();
             }
             
             if(mensaje.getOpcion() == 7){                
@@ -79,18 +76,18 @@ public class Hilo extends Thread {
         }
                      
                 
-                oos.writeObject(mensaje);
-                oos.flush();
-                oos.close();
-                ois.close();
-                socket.close();
+                //oos.writeObject(mensaje);
+                
             
             }
             
                         
         
        
-        
+        oos.flush();
+             oos.close();
+                ois.close();
+                socket.close();
         
         
         } catch (IOException ex) {
@@ -100,6 +97,7 @@ public class Hilo extends Thread {
         } catch (ParseException ex) {
             Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     
