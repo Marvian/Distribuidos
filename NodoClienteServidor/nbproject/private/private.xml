@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/marvian/Documentos/Sistemas%20Distribuidos/ProyecDist/NodoClienteServidor/src/nodoclienteservidor/CanalReceptor.java</file>
             <file>file:/home/marvian/Documentos/Sistemas%20Distribuidos/ProyecDist/NodoClienteServidor/src/nodoclienteservidor/Peticion.java</file>
             <file>file:/home/marvian/Documentos/Sistemas%20Distribuidos/ProyecDist/NodoClienteServidor/src/nodoclienteservidor/Hilo.java</file>
+=======
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/Hilo.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/JsonRecurso.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/CanalReceptor.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/CorreHilo.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/Peticion.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/NodoClienteServidor.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/nodoclienteservidor/EnvioRecurso.java</file>
+            <file>file:/home/gilbert/Documentos/DistMarvi/Distribuidos/NodoClienteServidor/src/pan/Mensaje.java</file>
+>>>>>>> a47c4ffb987ff4ba64efd8e072b281662b76eb35
         </group>
     </open-files>
 </project-private>

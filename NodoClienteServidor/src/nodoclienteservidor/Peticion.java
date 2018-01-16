@@ -29,7 +29,12 @@ public class Peticion {
     public static String registro (Mensaje mensaje){
 		try{
 			
+<<<<<<< HEAD
 			Socket socket = new Socket("192.168.43.195", 11000);
+=======
+			Socket socket = new Socket("Localhost", 11000);
+
+>>>>>>> a47c4ffb987ff4ba64efd8e072b281662b76eb35
 			
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
@@ -40,7 +45,11 @@ public class Peticion {
                         
 			Mensaje recibido = (Mensaje) ois.readObject();                        
                       
+<<<<<<< HEAD
                         System.out.println("mi vecino" + recibido.getUsuario().getDireccionIP());
+=======
+                        System.out.println("mi vecino" + recibido.getUsuario().getDireccionVecino());
+>>>>>>> a47c4ffb987ff4ba64efd8e072b281662b76eb35
 			JsonVecinoSig.EscriboVecino(recibido.getUsuario().getDireccionVecino());
                         
                         String prueba = null;
