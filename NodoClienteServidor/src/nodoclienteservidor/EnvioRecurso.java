@@ -59,7 +59,9 @@ public class EnvioRecurso implements Serializable {
 				}
 				contador++;
 			}
-			System.out.println("Valor total: " +total);
+			//contador comienza en 0, por eso sumo 1 para tener el total del archivo
+                        total = contador + 1;
+                        System.out.println("Valor total: " +total);
 			envio.setOpcion(total);
 			envio.setByteParaEnvio(bytesEntrada);
 			System.out.println("Estoy enviando este array: " +envio.getByteParaEnvio());
